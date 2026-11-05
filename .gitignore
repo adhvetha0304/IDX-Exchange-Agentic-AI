@@ -1,0 +1,30 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Credentials and private configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+mysql-config/
+
+# Databases and internship datasets
+*.sql
+*.sql.gz
+*.csv
+*.tsv
+*.sqlite
+*.db
+
+# macOS and editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log
