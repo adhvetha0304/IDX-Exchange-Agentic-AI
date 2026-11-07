@@ -28,3 +28,4 @@ mysql-config/
 
 # Logs
 *.log
+node_modules/
