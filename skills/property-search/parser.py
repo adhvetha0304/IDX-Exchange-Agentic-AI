@@ -5,7 +5,7 @@ import sys
 
 def parse_amount(value, suffix=None):
     amount = float(value.replace(",", ""))
-    multiplier = {"k": 1000, "m": 1000000}
+    multiplier = {"k": 1000, "m": 1000000, "thousand": 1000, "million": 1000000}
     return int(amount * multiplier.get((suffix or "").lower(), 1))
 
 
@@ -26,7 +26,7 @@ def parse_property_query(query):
     )
 
     price = re.search(
-        r"\b(?:under|below|less than|max(?:imum)?(?: price)?(?: of)?)\s+\$?([\d,]+(?:\.\d+)?)\s*([km])?\b",
+        r"\b(?:under|below|less than|max(?:imum)?(?: price)?(?: of)?)\s+\$?([\d,]+(?:\.\d+)?)\s*(million|thousand|[km])?(?![\w.])",
         without_hoa, re.I
     )
 

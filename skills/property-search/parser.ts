@@ -12,8 +12,8 @@ export interface PropertyFilters {
 
 function parseAmount(value: string, suffix?: string): number {
   let amount = Number(value.replace(/,/g, ""));
-  if (suffix?.toLowerCase() === "k") amount *= 1000;
-  if (suffix?.toLowerCase() === "m") amount *= 1000000;
+  if (["k", "thousand"].includes(suffix?.toLowerCase() ?? "")) amount *= 1000;
+  if (["m", "million"].includes(suffix?.toLowerCase() ?? "")) amount *= 1000000;
   return amount;
 }
 
@@ -31,7 +31,7 @@ export async function parsePropertyQuery(
   );
 
   const priceMatch = queryWithoutHOA.match(
-    /\b(?:under|below|less than|max(?:imum)?(?: price)?(?: of)?)\s+\$?([\d,]+(?:\.\d+)?)\s*([km])?\b/i
+    /\b(?:under|below|less than|max(?:imum)?(?: price)?(?: of)?)\s+\$?([\d,]+(?:\.\d+)?)\s*(million|thousand|[km])?(?![\w.])/i
   );
 
   const bedsMatch = query.match(

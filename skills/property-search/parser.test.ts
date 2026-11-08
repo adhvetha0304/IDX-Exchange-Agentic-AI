@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { parsePropertyQuery, type PropertyFilters } from "./parser";
+import { parsePropertyQuery, type PropertyFilters } from "./parser.ts";
 
 const cases: Array<{
   query: string;
